@@ -1,0 +1,25 @@
+{
+  "name": "alert-app",
+  "version": "1.0.0",
+  "description": "Receive alerts from OpenShift AlertManager, save them to MongoDB and provide alert history Web application.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Izumo/alert-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Izumo/alert-app/issues"
+  },
+  "homepage": "https://github.com/Izumo/alert-app#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "async": "^3.2.0",
+    "mongodb": "^3.5.8"
+  }
+}
