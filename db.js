@@ -52,12 +52,12 @@ exports.insert_alert = function (alert, callback) {
 // find the alert record which have the pattern
 //----------------------------------------------
 exports.search_alert = function (pattern, callback) {
-    console.log("------ find ------");
+//  console.log("------ find ------");
     
     var collection = _db.collection(MONGODB_COLLECTION)
     collection.find(pattern).toArray(function(err, result) {
         assert.equal(null, err);
-        console.log("------ found ------");
+//      console.log("------ found ------");
 	
 	callback(null, result);
     });
