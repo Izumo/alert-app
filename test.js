@@ -33,15 +33,47 @@ function insert_alert(db, alert, callback) {
         
 }
 
+function search_alert(db, pattern, callback) {
+    console.log("------ find ------");
+
+    var collection = db.collection("alerts")
+    collection.find(pattern).toArray(function(err, result) {
+        assert.equal(null, err);
+        console.log("------ found ------");
+	
+	callback(null, result);
+    });
+}
+
+function update_alert(db, where, set, callback) {
+    console.log("------ update ------");
+
+    var collection = db.collection("alerts")
+    collection.updateMany(where, set, function(err) {
+        assert.equal(null, err);
+        console.log("------ updated ------");
+	
+	callback(null);
+    });
+}
+
 async.waterfall([
     function(callback) {
         init_db(callback);
     },
     function(callback) {
         insert_alert(_db, {a: "a", b: "b"}, callback);
+    },
+    function(callback) {
+        search_alert(_db, {a: "a"}, function(err, result) {
+            console.log(result);
+            callback(null);
+        });
+    },
+    function(callback) {
+        update_alert(_db, {a: "a"}, {$set: {b: "c"}}, callback);
     }
 ], function(err) {
-	console.log(err);
         if (err) throw err;
         console.log("------ done ------");
 });
