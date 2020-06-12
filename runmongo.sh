@@ -1,1 +1,1 @@
-podman run -d -p 27017:27017 -v /home/core/work/alert-app/data:/var/lib/mongodb/data -e MONGODB_ADMIN_PASSWORD=mongodb -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=alerts -t rhscl/mongodb-36-rhel7
+podman run -d --name mongodb -p 27017:27017 -v /home/core/work/alert-app/data:/var/lib/mongodb/data -e MONGODB_ADMIN_PASSWORD=mongodb -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=alerts -t rhscl/mongodb-36-rhel7
