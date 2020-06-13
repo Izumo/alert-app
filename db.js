@@ -6,8 +6,8 @@ var env = process.env;
 
 var MONGODB_USER = env.MONGODB_USER ? env.MONGODB_USER : "mongodb";
 var MONGODB_PASS = env.MONGODB_PASS ? env.MONGODB_PASS : "mongodb";
-var MONGODB_HOST = env.MONGODB_HOST ? env.MONGODB_HOST : "localhost";
-var MONGODB_PORT = env.MONGODB_PORT ? env.MONGODB_PORT : "27017";
+var MONGODB_HOST = env.MONGODB_SERVICE_HOST ? env.MONGODB_SERVICE_HOST : "localhost";
+var MONGODB_PORT = env.MONGODB_SERVICE_PORT ? env.MONGODB_SERVICE_PORT : "27017";
 var MONGODB_DB   = env.MONGODB_DB   ? env.MONGODB_DB   : "alerts";
 var MONGODB_COLLECTION = env.MONGODB_COLLECTION   ? env.MONGODB_COLLECTION   : "alerts";
 

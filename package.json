@@ -4,7 +4,8 @@
   "description": "Receive alerts from OpenShift AlertManager, save them to MongoDB and provide alert history Web application.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,6 @@
     "async": "^3.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.8"
-  }
+  },
+  "devDependencies": {}
 }

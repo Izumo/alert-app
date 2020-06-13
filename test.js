@@ -2,13 +2,32 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var async = require('async');
 
-var url = 'mongodb://mongodb:mongodb@localhost:27017/alerts';
-var document = 'alerts';
+
+var url;
+const dbname = 'alerts';
+const document = 'alerts';
+
 
 var _db;
 
+mongoService = process.env.MONGODB_SERVICE.toUpperCase();
+if (mongoService) {
+    const host = process.env[mongoService + '_SERVICE_HOST'];
+    const port = process.env[mongoService + '_SERVICE_PORT'];
+    const user = process.env.MONGODB_USER;
+    const pass = process.env.MONGODB_PASS;
+
+    console.log(process.env);
+
+    url = 'mongodb://' + user + ':' + pass + '@' + host + ':' + port + '/' + dbname;
+}
+else {
+    url = 'mongodb://mongodb:mongodb@localhost:27017/alerts';
+}
+
+
 function init_db(callback) {
-    console.log("------ connect ------");
+    console.log("------ connecting " + url + "  ------");
 
     client = new MongoClient(url, { useUnifiedTopology: true } );
     client.connect(function(err) {
