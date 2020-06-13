@@ -94,6 +94,9 @@ app.post('/webhook/', (req, res) => {
     var pattern = {};;
     pattern.startsAt    = incoming.startsAt;
     pattern.fingerprint = incoming.fingerprint;
+    console.log('--- pattern ---');
+    console.log(pattern);
+    console.log('--- pattern ---');
 
     // search for alert already posted
     db.search_alert(pattern, function(err, result) {
