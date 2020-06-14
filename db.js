@@ -38,6 +38,7 @@ exports.init_db = function (callback) {
 //------------------------
 exports.insert_alert = function (alert, callback) {
     console.log("------ insert ------");
+    console.log(alert); // for debug
     
     var collection = _db.collection(MONGODB_COLLECTION)
     collection.insertOne(alert, function(err, result) {
