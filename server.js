@@ -92,7 +92,7 @@ app.post('/webhook/', (req, res) => {
     var incoming = req.body.alerts[i];
 
     var pattern = {};;
-    pattern.startsAt    = incoming.startsAt;
+//  pattern.startsAt    = incoming.startsAt;
     pattern.fingerprint = incoming.fingerprint;
     console.log('--- pattern ---');
     console.log(pattern);
