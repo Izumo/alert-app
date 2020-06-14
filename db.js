@@ -45,6 +45,9 @@ exports.insert_alert = function (alert, callback) {
         assert.equal(null, err);
         console.log("------ inserted ------");
 
+        console.log("--- after insertion ---");
+        console.log(alert);
+        console.log("------");
         callback(null);
     });
 }

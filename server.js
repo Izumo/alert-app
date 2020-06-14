@@ -98,9 +98,6 @@ app.post('/webhook/', (req, res) => {
     console.log(pattern);
     console.log('--- pattern ---');
 
-    console.log("--- for debug ---");
-    console.log(incoming);
-    console.log("--- for debug end ---");
 
     // search for alert already posted
     db.search_alert(pattern, function(err, result) {
