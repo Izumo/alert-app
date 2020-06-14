@@ -1,0 +1,10 @@
+#!/bin/sh
+
+HOST=alert-receiver.apps-crc.testing
+HOST=test-sample.apps-crc.testing
+HOST=localhost:8080
+
+
+curl -XPOST -H "Content-Type: application/json" --data @data1.json http://${HOST}/webhook
+curl -XPOST -H "Content-Type: application/json" --data @data2.json http://${HOST}/webhook
+curl -XPOST -H "Content-Type: application/json" --data @data3.json http://${HOST}/webhook

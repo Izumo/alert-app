@@ -38,16 +38,12 @@ exports.init_db = function (callback) {
 //------------------------
 exports.insert_alert = function (alert, callback) {
     console.log("------ insert ------");
-    console.log(alert); // for debug
     
     var collection = _db.collection(MONGODB_COLLECTION)
     collection.insertOne(alert, function(err, result) {
         assert.equal(null, err);
         console.log("------ inserted ------");
 
-        console.log("--- after insertion ---");
-        console.log(alert);
-        console.log("------");
         callback(null);
     });
 }

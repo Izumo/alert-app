@@ -91,41 +91,43 @@ app.post('/webhook/', (req, res) => {
 //  var alert = buildAlertObject(req.body.alerts[i]);
     var incoming = req.body.alerts[i];
 
-    var pattern = {};;
-//  pattern.startsAt    = incoming.startsAt;
-    pattern.fingerprint = incoming.fingerprint;
-    console.log('--- pattern ---');
-    console.log(pattern);
-    console.log('--- pattern ---');
-
-
-    // search for alert already posted
-    db.search_alert(pattern, function(err, result) {
-        if (result.length > 0) {
-            // this alert was previously fired
-            found = result[0];     // assume only one record is in DB
-
-            // check those status
-            if (found.status == 'firing' && incoming.status == 'resolved') {
-                // now it's resolved, update it
-                db.update_alert(pattern, {$set: {status: 'resolved'}}, function(err) {
-                    console.log(formatAlert(buildAlertObject(incoming)));
-                });
-            }
-            else
-            {
-                // its already resolved, do nothing.
-            }
-        }
-        else {
-            // this is the first firing, save it
-            db.insert_alert(incoming, function() {
-                console.log(formatAlert(buildAlertObject(incoming)));
-            });
-        }
-    });
+    handleAlert(incoming);
   }
+
 });
+
+function handleAlert(incoming) {
+
+  var pattern = {};;
+//  pattern.startsAt    = incoming.startsAt;
+  pattern.fingerprint = incoming.fingerprint;
+
+  // search for alert already posted
+  db.search_alert(pattern, function(err, result) {
+      if (result.length > 0) {
+          // this alert was previously fired
+          found = result[0];     // assume only one record is in DB
+
+          // check those status
+          if (found.status == 'firing' && incoming.status == 'resolved') {
+              // now it's resolved, update it
+              db.update_alert(pattern, {$set: {status: 'resolved'}}, function(err) {
+                  console.log(formatAlert(buildAlertObject(incoming)));
+              });
+          }
+          else
+          {
+              // its already resolved, do nothing.
+          }
+      }
+      else {
+          // this is the first firing, save it
+          db.insert_alert(incoming, function() {
+              console.log(formatAlert(buildAlertObject(incoming)));
+          });
+      }
+  });
+}
 
 //------------------------------------------------------------
 // POST handler for watchdog
