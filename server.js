@@ -98,6 +98,10 @@ app.post('/webhook/', (req, res) => {
     console.log(pattern);
     console.log('--- pattern ---');
 
+    console.log("--- for debug ---");
+    console.log(incoming);
+    console.log("--- for debug end ---");
+
     // search for alert already posted
     db.search_alert(pattern, function(err, result) {
         if (result.length > 0) {
@@ -118,9 +122,6 @@ app.post('/webhook/', (req, res) => {
         }
         else {
             // this is the first firing, save it
-            console.log("--- for debug ---");
-            console.log(incoming);
-            console.log("--- for debug end ---");
             db.insert_alert(incoming, function() {
                 console.log(formatAlert(buildAlertObject(incoming)));
             });
