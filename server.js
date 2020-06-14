@@ -118,6 +118,9 @@ app.post('/webhook/', (req, res) => {
         }
         else {
             // this is the first firing, save it
+            console.log("--- for debug ---");
+            console.log(incoming);
+            console.log("--- for debug end ---");
             db.insert_alert(incoming, function() {
                 console.log(formatAlert(buildAlertObject(incoming)));
             });
