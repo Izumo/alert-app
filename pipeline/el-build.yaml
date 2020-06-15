@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: build
+spec:
+  serviceAccountName: pipeline
+  triggers:
+  - bindings:
+    - name: build
+    template:
+      name: build
