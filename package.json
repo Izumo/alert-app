@@ -20,8 +20,8 @@
   "homepage": "https://github.com/Izumo/alert-app#readme",
   "dependencies": {
     "assert": "^2.0.0",
-    "async": "^3.2.0",
-    "express": "^4.18.2",
+    "async": "^3.2.2",
+    "express": "^4.17.1",
     "mongodb": "^3.5.8"
   },
   "devDependencies": {}
